@@ -1,3 +1,7 @@
+//The code below prints numbers 
+
+//*****************************************
+
 #include<iostream>
 
 int main(){

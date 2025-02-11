@@ -1,0 +1,57 @@
+// The code below determines if the multiplication of two arrays is viable and performs the operation.
+
+//****************************************************************************************************
+
+#include<iostream>
+
+int main(){
+    int rowsA, columnsA, rowsB, columnsB;
+
+    std::cout<<"Rows A: ";
+    std::cin>>rowsA;
+    std::cout<<"Columns A: ";
+    std::cin>>columnsA;
+    std::cout<<"Rows B: ";
+    std::cin>>rowsB;
+    std::cout<<"Columns B: ";
+    std::cin>>columnsB;
+
+    int A[rowsA][columnsA], B[rowsB][columnsB], C[rowsA][columnsB]={};
+
+    if(columnsA==rowsB){
+        for(int i=0;i<rowsA;i++){
+            for(int j=0;j<columnsA;j++){
+                std::cout<<"A"<<i<<j<<" ";
+                std::cin>>A[i][j];
+            }
+        }
+        
+        for(int i=0;i<rowsB;i++){
+            for(int j=0;j<columnsB;j++){
+                std::cout<<"B"<<i<<j<<" ";
+                std::cin>>B[i][j];
+            }
+        }
+
+        for(int i=0;i<rowsA;i++){
+            for(int j=0;j<columnsB;j++){
+                for(int k=0;k<columnsA;k++){
+                    C[i][j]+=A[i][k]*B[k][j];
+                }
+            }
+        }
+
+        for(int i=0;i<rowsA;i++){
+            for(int j=0;j<columnsB;j++){
+                std::cout<<C[i][j]<<" ";
+            }
+            std::cout<<std::endl;
+        }
+
+    }
+    else{
+        std::cout<<"Multiplication not viable!";
+    }
+
+    return 0;
+}

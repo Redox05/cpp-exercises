@@ -1,3 +1,8 @@
+//The code below prints a pattern with asteriscs where i<=j
+
+//*****************************************
+
+
 #include<iostream>
 
 int main(){
