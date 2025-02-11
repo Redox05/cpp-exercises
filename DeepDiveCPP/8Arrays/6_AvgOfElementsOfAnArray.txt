@@ -1,0 +1,30 @@
+// The code below determines the average of all elements of an array.
+
+//*******************************************************************
+
+#include<iostream>
+
+int main(){
+    int noElements;
+    float sum=0, average=0;
+
+    std::cout<<"No of elements: ";
+    std::cin>>noElements;
+
+    float A[noElements];
+
+    for(int i=0;i<noElements;i++){
+        std::cout<<"A"<<i<<" ";
+        std::cin>>A[i];
+    }
+
+    for(float x:A){
+        sum+=x;
+    }
+
+    average=sum/noElements;
+
+    std::cout<<"Average = "<<average;
+
+    return 0;
+}
