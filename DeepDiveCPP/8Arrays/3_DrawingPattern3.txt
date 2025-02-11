@@ -1,0 +1,15 @@
+#include<iostream>
+
+int main(){
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(i<=j){
+                std::cout<<"*"; //Pay attention to the space before and after the asterisc
+            }
+            else{
+                std::cout<<" "; //If spaces before and after the asterisc are modofied, the amount of spaces in this line should be modified as well
+            }
+        }
+        std::cout<<std::endl;
+    }
+}
