@@ -1,0 +1,32 @@
+//The code below validates the username in an email address.
+
+//*********************************************************************************************
+
+#include<iostream>
+
+int main(){
+    std::string email="ruben.ortega@aspentech.com";
+    int index = email.find("@");
+    int numValid=0,numInvalid=0;
+
+    std::string username = email.substr(0,index);
+
+    for(int i=0;i<username.length();i++){
+        if(isalpha(username[i])==0 && isdigit(username[i])==0 && username[i]!='_' && username[i]!='.'){
+            numInvalid++;
+        }
+        else{
+            numValid++;
+        }
+    }
+
+    if(numInvalid>0){
+        std::cout<<"Not a valid username"<<std::endl;
+    }
+    else{
+        std::cout<<"Valid username"<<std::endl;
+    }
+
+    return 0;
+    
+}
