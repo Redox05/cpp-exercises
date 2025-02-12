@@ -1,3 +1,7 @@
+//The code below counts the number of characters in a string array 
+
+//****************************************************************
+
 #include<iostream>
 
 int main(){
