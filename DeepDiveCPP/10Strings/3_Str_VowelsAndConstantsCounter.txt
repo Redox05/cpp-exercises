@@ -1,0 +1,29 @@
+//The code below counts vowels and consonants in a string.
+//Finally, it displays the total of vowels, consonants, and spcaes in the string. 
+
+//************************************************************************
+
+#include<iostream>
+
+int main(){
+    int counterVowel=0,counterConsonant=0, counterSpaces=0;
+    
+    std::string str="WELCOME to The JunGle we got Fun AND GamE";
+    
+    for(int i=0;str[i]!='\0';i++){
+    	if(str[i]==65 || str[i]==69 || str[i]==73 || str[i]==79 || str[i]==85 || str[i]==97 || str[i]==101 || str[i]==105 || str[i]==111 || str[i]==117){
+    		counterVowel++;
+		}
+		else if(str[i]==' '){
+			counterSpaces++;
+		}
+		else{
+			counterConsonant++;
+		}
+	}
+	
+	std::cout<<"No of vowels: "<<counterVowel<<std::endl;
+	std::cout<<"No of consonants: "<<counterConsonant<<std::endl;
+    std::cout<<"No of words: "<<counterSpaces+1<<std::endl;
+    return 0;
+}
