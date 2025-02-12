@@ -1,0 +1,18 @@
+//The code below finds the username in an email address.
+
+//*********************************************************************************************
+
+#include<iostream>
+
+int main(){
+
+    std::string email="ruben.ortega@aspentech.com";
+    int index = email.find("@");
+
+    std::string username = email.substr(0,index);
+
+    std::cout<<username<<std::endl;
+
+    return 0;
+    
+}
