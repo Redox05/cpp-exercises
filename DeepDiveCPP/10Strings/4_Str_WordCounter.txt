@@ -1,0 +1,48 @@
+//The code below counts vowels,consonants, words, spaces, and digits in a string.
+//Finally, it displays the total of vowels,consonants, words, spaces, and digits in the string. 
+
+//*********************************************************************************************
+
+#include<iostream>
+
+int main(){
+    int counterVowel=0,counterConsonant=0, counterSpaces=0, counterChanges=0, counterDigits=0;
+
+    std::string str="WELCOME         to the JunGLE we got fun and GamE8";
+    
+    for(int i=0;str[i]!='\0';i++){
+    	if(str[i]==65 || str[i]==69 || str[i]==73 || str[i]==79 || str[i]==85 ||
+			str[i]==97 || str[i]==101 || str[i]==105 || str[i]==111 || str[i]==117){
+				
+    		counterVowel++;
+    		
+		}
+		else if( (str[i]==' ' && str[i+1]!=' ')){
+			
+			counterChanges++;
+			
+		}
+		else if(str[i]==' '){
+			
+			counterSpaces++;
+			
+		}
+		else if(isdigit(str[i])){
+			counterDigits++;
+		}
+		else{
+			
+			counterConsonant++;
+			
+		}
+	}
+	
+	std::cout<<"No of vowels: "<<counterVowel<<std::endl;
+	std::cout<<"No of consonants: "<<counterConsonant<<std::endl;
+    std::cout<<"No of changes: "<<counterChanges<<std::endl;
+    std::cout<<"No of words: "<<counterChanges+1<<std::endl;
+    std::cout<<"No of spaces: "<<counterSpaces<<std::endl;
+    std::cout<<"No of digits: "<<counterDigits<<std::endl;
+    
+    return 0;
+}
