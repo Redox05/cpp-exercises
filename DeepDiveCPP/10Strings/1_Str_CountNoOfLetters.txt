@@ -1,0 +1,14 @@
+#include<iostream>
+
+int main(){
+    int counter=0;
+    std::string str="WELCOME";
+    
+    for(int i=0;str[i]!='\0';i++){
+    	counter++;
+	}
+	
+	std::cout<<counter;
+    
+    return 0;
+}
