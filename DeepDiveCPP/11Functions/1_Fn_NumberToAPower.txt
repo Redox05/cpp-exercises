@@ -1,0 +1,18 @@
+// The code below calculates the power of a number by
+// implementing a function called in the main method.
+
+// ******************************************************
+
+#include<iostream>
+
+int pp(int x, int y){
+    int p=1;
+    for(int i=0;i<y;i++){
+        p=p*x;
+    }
+    return p;
+}
+
+int main(){
+    std::cout<<pp(15,10);
+}
