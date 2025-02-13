@@ -1,0 +1,31 @@
+// The code below does a linear search using a function.
+// An array is given as a parameter of the function.
+// A key is provided to be searched in the elements of the array.
+
+// **************************************************************
+
+#include<iostream>
+
+int linsearch(int *A,int size, int key){
+    for(int i=0;i<size;i++){
+        if(key==A[i]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main(){
+    int A[12]={24,31,52,93,84,37,2,9,19,73,68,8};
+    int sizeA=sizeof(A)/sizeof(A[0]);
+    int k;
+
+    std::cout<<"Enter KEY: ";
+    std::cin>>k;
+
+    // std::cout<<sizeA<<std::endl;
+
+    int position = linsearch(A,sizeA,k);
+
+    std::cout<<"Found at index (-1 = Not Found): "<<position<<std::endl;
+}
