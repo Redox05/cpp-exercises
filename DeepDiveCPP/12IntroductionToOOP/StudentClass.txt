@@ -1,0 +1,173 @@
+// The text below is a prototype of a class for a "Student".
+// It contains the following functions
+// 	- Constructors
+// 	- Mutators (setters)
+// 	- Accessors (getters)
+// 	- Functions
+// 	- Prooves
+// 	- Destructor
+
+// It can be improved by verifing that Student's Name is a valid name.
+
+
+
+
+#include<iostream>
+
+class Student{
+    private:
+        int numberList;
+        std::string studentName;
+        double math;
+        double physics;
+        double history;
+    public:
+        Student(int number, std::string name, double math, double physics, double history);
+        Student(Student &student);
+
+        void setNumberList(int num);
+        void setStudentName(std::string stdntName);
+        void setMathMark(double mark);
+        void setPhysicsMark(double mark);
+        void setHistoryMark(double mark);
+
+        int getNumberList() {return numberList;}
+        std::string getStudentName() {return studentName;}
+        double getMathMark() {return math;}
+        double getPhysicsMark() {return physics;}
+        double getHistoryMark() {return history;}
+        
+
+        int totalMarks();
+        double grade();
+
+        bool approved();
+
+        ~Student();
+
+};
+
+int main(){
+
+    int noList;
+    std::string sttName;
+    double matMar, physMar, hisMar;
+
+    std::cout<<"Enter student's number list: ";
+    std::cin>>noList;
+
+    std::cout<<"Enter student's name: ";
+    std::cin>>sttName;
+        
+    std::cout<<"Math's mark: ";
+    std::cin>>matMar;
+
+    std::cout<<"Physics' mark: ";
+    std::cin>>physMar;
+
+    std::cout<<"History's mark: ";
+    std::cin>>hisMar;
+
+    Student stdnt1(noList,sttName,matMar,physMar,hisMar);
+    
+    std::cout<<"No. List: "<<stdnt1.getNumberList()<<std::endl;
+    std::cout<<"Name: "<<stdnt1.getStudentName()<<std::endl;
+    std::cout<<"Math: "<<stdnt1.getMathMark()<<std::endl;
+    std::cout<<"Physics: "<<stdnt1.getPhysicsMark()<<std::endl;
+    std::cout<<"History: "<<stdnt1.getHistoryMark()<<std::endl;
+    std::cout<<"Total Marks: "<<stdnt1.totalMarks()<<std::endl;
+    std::cout<<"Grade: "<<stdnt1.grade()<<std::endl;
+    
+    if(stdnt1.approved()){
+        std::cout<<"Approved"<<std::endl;
+    }
+    else{
+        std::cout<<"Not approved"<<std::endl;
+    }
+
+    return 0;
+}
+
+Student::Student(int number=0, std::string name="AAAA", double mathM=0, double physicsM=0, double historyM=0){
+    setNumberList(number);
+    setStudentName(name);
+    setMathMark(mathM);
+    setPhysicsMark(physicsM);
+    setHistoryMark(historyM);
+}
+
+Student::Student(Student &stdnt){
+    numberList=stdnt.numberList;
+    studentName=stdnt.studentName;
+    math=stdnt.math;
+    physics=stdnt.physics;
+    history=stdnt.history;
+}
+
+void Student::setNumberList(int num){
+    if(num>0){
+        numberList=num;
+    }
+    else{
+        numberList=0;
+    }
+}
+void Student::setStudentName(std::string stdntName){
+
+    int numValid=0, numInvalid=0;
+
+    for(int i=0;i<stdntName.length();i++){
+        if(isalpha(stdntName[i])==0 && isdigit(stdntName[i])!=0 && stdntName[i]!='_' && stdntName[i]!='.'){
+            numInvalid++;
+        }
+        else{
+            numValid++;
+        }
+    }
+
+    if(numInvalid>0){
+        std::cout<<"Not a valid username"<<std::endl;
+    }
+    else{
+        std::cout<<"Valid username"<<std::endl;
+        studentName=stdntName;
+    }
+}
+void Student::setMathMark(double mark){
+    if(mark>0){
+        math=mark;
+    }
+    else{
+        math=0;
+    }
+}
+void Student::setPhysicsMark(double mark){
+    if(mark>0){
+        physics=mark;
+    }
+    else{
+        physics=0;
+    }
+}
+void Student::setHistoryMark(double mark){
+    if(mark>0){
+        history=mark;
+    }
+    else{
+        history=0;
+    }
+}
+int Student::totalMarks(){
+    if(math>0 && physics>0 && history>0){
+        return 3;
+    }
+}
+double Student::grade(){
+    return (math+physics+history)/3;
+}
+bool Student::approved(){
+    return grade()>=8;
+}
+Student::~Student(){
+    std::cout<<"Student DESTROYED!"<<std::endl;
+}
