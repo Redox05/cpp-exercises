@@ -7,10 +7,6 @@
 // 	- Prooves
 // 	- Destructor
 
-// It can be improved by verifing that Student's Name is a valid name.
-
-
-
 
 #include<iostream>
 
