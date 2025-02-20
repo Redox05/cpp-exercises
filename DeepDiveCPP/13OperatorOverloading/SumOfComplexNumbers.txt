@@ -1,3 +1,7 @@
+// The program below uses a Complex class to add or substract two complex numbers.
+
+// Both operators "+" and "-" are overloaded to be used to sum or substract instances of the class.
+
 #include<iostream>
 
 class Complex{
