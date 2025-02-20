@@ -1,0 +1,111 @@
+// The program below uses a Rational class to add or substract two rational numbers.
+
+// Both operators "+" and "-" are overloaded to be used to sum or substract instances of the class.
+// Additionally, the insertion operator is also overloaded. This makes the code more readable and intuitive
+// by using the familiar syntax even with instances of the rational class.
+
+#include<iostream>
+
+class Rational{
+    private:
+        int numerator;
+        int denominator;
+    public:
+        Rational();
+        Rational(int num, int den);
+        Rational(Rational &r);
+
+        void setNumerator(int num);
+        int setDenominator(int den);
+
+        int getNumerator(){return numerator;}
+        int getDenominator(){return denominator;}
+
+        Rational operator+(Rational x);
+        Rational operator-(Rational x);
+        friend std::ostream & operator<<(std::ostream &out, Rational &r);
+};
+
+int main(){
+    int numerator1, denominator1, numerator2, denominator2;
+    int selectOperation;
+
+    std::cout<<"Numerator 1: ";
+    std::cin>>numerator1;
+    std::cout<<"Denominator 1: ";
+    std::cin>>denominator1;
+    std::cout<<"Numerator 2: ";
+    std::cin>>numerator2;
+    std::cout<<"Denominator 2: ";
+    std::cin>>denominator2;
+
+    Rational c1(numerator1,denominator1),c2(numerator2,denominator2),c3;
+
+    std::cout<<"Select an operation: 1) SUM  2) SUBSTRACTION  ";
+    std::cin>>selectOperation;
+
+    if(selectOperation==1){
+        if(denominator1==0 || denominator2==0){
+            std::cout<<"UNDIFINED! Review values!"<<std::endl;
+        }
+        else{
+            c3=c1+c2;
+        }
+    }
+    else if(selectOperation==2){
+        if(denominator1==0 || denominator2==0){
+            std::cout<<"UNDIFINED! Review values!"<<std::endl;
+        }
+        else{
+            c3=c1-c2;
+        }
+    }
+    else{
+        std::cout<<"Operation not available!"<<std::endl;
+    }
+    
+    std::cout<<c3;
+
+    return 0;
+
+}
+
+Rational::Rational(){
+    int numerator=1;
+    int denominator=1;
+}
+Rational::Rational(int num, int den){
+    setNumerator(num);
+    setDenominator(den);
+}
+Rational::Rational(Rational &r){
+    numerator=r.numerator;
+    denominator=r.denominator;
+}
+void Rational::setNumerator(int num){
+    numerator=num;
+}
+int Rational::setDenominator(int den){
+    if(den!=0){
+        denominator=den;
+    }
+    else{
+        return 0;
+    }
+}
+Rational Rational::operator+(Rational x){
+    Rational temp;
+    temp.numerator=(numerator*x.denominator)+(denominator*x.numerator);
+    temp.denominator=denominator*x.denominator;
+    return temp;
+}
+Rational Rational::operator-(Rational x){
+    Rational temp;
+    temp.numerator=(numerator*x.denominator)-(denominator*x.numerator);
+    temp.denominator=denominator*x.denominator;
+    return temp;
+}
+std::ostream & operator<<(std::ostream &out, Rational &r){
+    out<<r.numerator<<"/"<<r.denominator<<std::endl;
+    return out;
+}
