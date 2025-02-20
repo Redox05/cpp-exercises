@@ -1,0 +1,84 @@
+// The program below uses a Complex class to add or substract two complex numbers.
+
+// Both operators "+" and "-" are overloaded to be used to sum or substract instances of the class.
+// Additionally, the insertion operator is also overloaded. This makes the code more readable and intuitive
+// by using the familiar syntax even with instances of the complex class.
+
+#include<iostream>
+
+class Complex{
+    private:
+        double real;
+        double imaginary;
+    public:
+        Complex(double real, double imag);
+        Complex(Complex &x);
+
+        void setReal(double real);
+        void setImaginary(double imaginary);
+
+        double getReal(){return real;}
+        double getImaginary(){return imaginary;}
+
+        friend Complex operator+(Complex a, Complex b);
+        friend Complex operator-(Complex a, Complex b);
+
+        friend std::ostream & operator<<(std::ostream &out, Complex &c); //Friend function to OVERLOAD INSERTION OPERATOR
+
+        bool isReal();
+
+        // ~Complex();
+};
+
+int main(){
+    Complex c1(5,3);
+    Complex c2(3,5);
+    Complex c3(0,0);
+
+    c3=c1+c2;
+    std::cout<<c3<<std::endl;
+
+    c3=c1-c2;
+    std::cout<<c3<<std::endl;
+
+    return 0;
+}
+
+Complex::Complex(double real=0, double img=0){
+    setReal(real);
+    setImaginary(img);
+}
+Complex::Complex(Complex &x){
+    real=x.real;
+    imaginary=x.imaginary;
+}
+void Complex::setReal(double r){
+    real=r;
+}
+void Complex::setImaginary(double im){
+    imaginary=im;
+}
+Complex operator+(Complex a, Complex b){ 
+    Complex temp;
+    temp.real=a.real+b.real;
+    temp.imaginary=a.imaginary+b.imaginary;
+    return temp;
+}
+Complex operator-(Complex a, Complex b){
+    Complex temp;
+    temp.real=a.real-b.real;
+    temp.imaginary=a.imaginary-b.imaginary;
+    return temp;
+}
+
+std::ostream & operator<<(std::ostream &out, Complex &c){ //This friend method allows the user to keep adding elements after << is used
+    out<<c.real<<" + "<<c.imaginary<<"i"<<std::endl;
+    return out;
+}
+
+bool Complex::isReal(){
+    return imaginary==0;
+}
+// Complex::~Complex(){
+//     cout<<"Object DESTROYED!"<<endl;
+// }
