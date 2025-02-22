@@ -1,0 +1,129 @@
+// In the program below, base class Employee inherits its properties to two derived classes, FullTimeEmployee and PartTimeEmployee. 
+// The parameterized constructor of base class is called using the Initializer List in the constructors for both derived classes.
+
+#include<iostream>
+
+class Employee{
+    private:
+        std::string employeeName;
+        std::string employeeID;
+    public:
+        Employee(std::string n, std::string id);
+        Employee(Employee &e);
+
+        void setName(std::string n);
+        void setID(std::string id);
+        std::string getName();
+        std::string getID();
+
+        ~Employee();
+
+};
+/******************************************************/
+//Full Time Employee With Salary
+class FullTimeEmployee : public Employee{ 
+    private:
+        int salary;
+    public:
+        FullTimeEmployee(std::string n, std::string eid, int s);
+        FullTimeEmployee(FullTimeEmployee &fte);
+
+        void setSalary(int s);
+        int getSalary(){return salary;}
+
+        //~FullTimeEmployee();
+
+};
+/******************************************************/
+//Part Time Employee
+class PartTimeEmployee : public Employee{
+    private:
+        int dailyWages;
+    public:
+        PartTimeEmployee(std::string n, std::string eid, int d);
+        PartTimeEmployee(PartTimeEmployee &pte);
+
+        void setDailyWages(int d);
+        int getDailyWages(){return dailyWages;}
+
+        //~PartTimeEmployee();
+};
+
+
+int main(){
+    Employee emp("Roko","0001");
+
+    FullTimeEmployee ft_emp("Pablito", "002", 1500);
+
+    PartTimeEmployee pt_emp("Juanito", "003", 300);
+
+    std::cout<<"Employee Name: "<<emp.getName()<<std::endl;
+    std::cout<<"Employee ID: "<<emp.getID()<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Full Time Employee Name: "<<ft_emp.getName()<<std::endl;
+    std::cout<<"Full Time Employee ID: "<<ft_emp.getID()<<std::endl;
+    std::cout<<"Full Time Employee Salary: "<<ft_emp.getSalary()<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Part Time Employee Name: "<<pt_emp.getName()<<std::endl;
+    std::cout<<"Part Time Employee ID: "<<pt_emp.getID()<<std::endl;
+    std::cout<<"Part Time Employee Daily Wages: "<<pt_emp.getDailyWages()<<std::endl;
+    std::cout<<std::endl;
+
+    return 0;
+
+}
+
+/*Employee Methods*/
+Employee::Employee(std::string name="AAA", std::string id="0000"){
+    setName(name);
+    setID(id);
+}
+Employee::Employee(Employee &emply){
+    employeeName=emply.employeeName;
+    employeeID=emply.employeeID;
+}
+void Employee::setName(std::string n){
+    employeeName=n;
+}
+void Employee::setID(std::string id){
+    employeeID=id;
+}
+std::string Employee::getName(){
+    return employeeName;
+}
+std::string Employee::getID(){
+    return employeeID;
+}
+Employee::~Employee(){
+    // cout<<"Employee Fired"<<endl;
+}
+
+/*Full Time Employee Methods*/
+FullTimeEmployee::FullTimeEmployee(std::string n, std::string eid, int s=0) : Employee(n,eid){
+    setName(n);
+    setID(eid);
+    setSalary(s);
+}
+void FullTimeEmployee::setSalary(int s){
+    if(s>0){
+        salary=s;
+    }
+    else{
+        salary=0;
+    }
+}
+
+/*Part Time Employee Methods*/
+PartTimeEmployee::PartTimeEmployee(std::string n, std::string eid, int dw=0) : Employee(n, eid){
+    setName(n);
+    setID(eid);
+    setDailyWages(dw);
+}
+void PartTimeEmployee::setDailyWages(int dw){
+    if(dw>0){
+        dailyWages=dw;
+    }
+    else{
+        dailyWages=0;
+    }
+}
