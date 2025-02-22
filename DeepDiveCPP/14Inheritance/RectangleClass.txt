@@ -1,5 +1,5 @@
 // In the program below, the Rectangle class inherits its properties to a new class called Cuboid. 
-// The parameterized construction of base class Rectangle is called using the Initializer List.
+// The parameterized constructor of base class Rectangle is called using the Initializer List.
 
 #include<iostream>
 
